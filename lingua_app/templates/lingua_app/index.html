@@ -1,0 +1,15 @@
+{% extends "lingua_app/base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<h2>Список уроков</h2>
+<div class="lessons-container">
+    {% for lesson in lessons %}
+    <div class="lesson-card">
+        <a href="{% url 'lingua_app:lesson' lesson.id %}">{{ lesson.title }}</a>
+        <p>Прогресс: {{ lesson.progress }}%</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

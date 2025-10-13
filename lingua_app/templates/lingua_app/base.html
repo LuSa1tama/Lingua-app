@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Language Learning{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'lingua_app/style.css' %}">
+</head>
+<body class="{% if theme == 'dark' %}dark{% else %}light{% endif %}">
+    <header>
+        <h1>Language Learning App</h1>
+        <nav>
+            <a href="{% url 'lingua_app:index' %}">Главная</a> |
+            <a href="{% url 'lingua_app:settings' %}">Настройки</a> |
+            <a href="{% url 'lingua_app:reset_progress' %}">Сброс прогресса</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

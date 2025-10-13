@@ -1,0 +1,31 @@
+{% extends "lingua_app/base.html" %}
+{% load static %}
+
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ lesson.title }}</h2>
+
+<div class="lesson-container">
+    <div class="lesson-text">
+        <p>{{ lesson.content|linebreaks }}</p>
+
+        <h3>Vocabulary</h3>
+        <ul class="vocab-list">
+            {% for word, translation in lesson.vocab %}
+            <li>{{ word }} - {{ translation }}</li>
+            {% endfor %}
+        </ul>
+
+        <p class="lesson-progress">Прогресс: {{ lesson.progress }}%</p>
+    </div>
+
+    {% if lesson.image %}
+    <div class="lesson-image-container">
+        <img class="lesson-image" src="{% static lesson.image %}" alt="{{ lesson.title }}">
+    </div>
+    {% endif %}
+</div>
+
+<a href="{% url 'lingua_app:index' %}">← Назад к урокам</a>
+{% endblock %}

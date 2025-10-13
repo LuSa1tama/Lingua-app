@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Изучение языков</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lingua_app/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="username">Привет, {{ username }}!</div>
+    <div class="word">Слово для перевода: {{ word.en }}</div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Проверить</button>
+    </form>
+</div>
+</body>
+</html>

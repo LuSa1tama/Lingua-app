@@ -1,0 +1,17 @@
+{% extends "lingua_app/base.html" %}
+
+{% block title %}Настройки{% endblock %}
+
+{% block content %}
+<h2>Настройки приложения</h2>
+<form method="post">
+    {% csrf_token %}
+    <label>Тема:</label>
+    <select name="theme">
+        <option value="light" {% if theme == 'light' %}selected{% endif %}>Светлая</option>
+        <option value="dark" {% if theme == 'dark' %}selected{% endif %}>Тёмная</option>
+    </select>
+    <br><br>
+    <button type="submit">Сохранить</button>
+</form>
+{% endblock %}
